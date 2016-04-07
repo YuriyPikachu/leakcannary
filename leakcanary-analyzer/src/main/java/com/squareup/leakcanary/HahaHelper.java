@@ -32,7 +32,7 @@ import static java.util.Arrays.asList;
 
 public final class HahaHelper {
 
-  private static final Set<String> WRAPPER_TYPES = new HashSet<>(
+  private static final Set<String> WRAPPER_TYPES = new HashSet<String>(
       asList(Boolean.class.getName(), Character.class.getName(), Float.class.getName(),
           Double.class.getName(), Byte.class.getName(), Short.class.getName(),
           Integer.class.getName(), Long.class.getName()));

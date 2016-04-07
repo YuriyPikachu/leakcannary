@@ -30,7 +30,7 @@ public final class LeakTrace implements Serializable {
   public final List<LeakTraceElement> elements;
 
   LeakTrace(List<LeakTraceElement> elements) {
-    this.elements = unmodifiableList(new ArrayList<>(elements));
+    this.elements = unmodifiableList(new ArrayList<LeakTraceElement>(elements));
   }
 
   @Override public String toString() {

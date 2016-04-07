@@ -52,7 +52,7 @@ public final class ExcludedRefs implements Serializable {
 
   private Map<String, Map<String, Exclusion>> unmodifiableRefStringMap(
       Map<String, Map<String, ParamsBuilder>> mapmap) {
-    LinkedHashMap<String, Map<String, Exclusion>> fieldNameByClassName = new LinkedHashMap<>();
+    LinkedHashMap<String, Map<String, Exclusion>> fieldNameByClassName = new LinkedHashMap<String, Map<String, Exclusion>>();
     for (Map.Entry<String, Map<String, ParamsBuilder>> entry : mapmap.entrySet()) {
       fieldNameByClassName.put(entry.getKey(), unmodifiableRefMap(entry.getValue()));
     }
@@ -60,7 +60,7 @@ public final class ExcludedRefs implements Serializable {
   }
 
   private Map<String, Exclusion> unmodifiableRefMap(Map<String, ParamsBuilder> fieldBuilderMap) {
-    Map<String, Exclusion> fieldMap = new LinkedHashMap<>();
+    Map<String, Exclusion> fieldMap = new LinkedHashMap<String, Exclusion>();
     for (Map.Entry<String, ParamsBuilder> fieldEntry : fieldBuilderMap.entrySet()) {
       fieldMap.put(fieldEntry.getKey(), new Exclusion(fieldEntry.getValue()));
     }
@@ -126,12 +126,12 @@ public final class ExcludedRefs implements Serializable {
   public static final class BuilderWithParams implements Builder {
 
     private final Map<String, Map<String, ParamsBuilder>> fieldNameByClassName =
-        new LinkedHashMap<>();
+        new LinkedHashMap<String, Map<String, ParamsBuilder>>();
     private final Map<String, Map<String, ParamsBuilder>> staticFieldNameByClassName =
-        new LinkedHashMap<>();
-    private final Map<String, ParamsBuilder> threadNames = new LinkedHashMap<>();
-    private final Map<String, ParamsBuilder> classNames = new LinkedHashMap<>();
-    private final Map<String, ParamsBuilder> rootClassNames = new LinkedHashMap<>();
+        new LinkedHashMap<String, Map<String, ParamsBuilder>>();
+    private final Map<String, ParamsBuilder> threadNames = new LinkedHashMap<String, ParamsBuilder>();
+    private final Map<String, ParamsBuilder> classNames = new LinkedHashMap<String, ParamsBuilder>();
+    private final Map<String, ParamsBuilder> rootClassNames = new LinkedHashMap<String, ParamsBuilder>();
 
     private ParamsBuilder lastParams;
 
@@ -143,7 +143,7 @@ public final class ExcludedRefs implements Serializable {
       checkNotNull(fieldName, "fieldName");
       Map<String, ParamsBuilder> excludedFields = fieldNameByClassName.get(className);
       if (excludedFields == null) {
-        excludedFields = new LinkedHashMap<>();
+        excludedFields = new LinkedHashMap<String, ParamsBuilder>();
         fieldNameByClassName.put(className, excludedFields);
       }
       lastParams = new ParamsBuilder("field " + className + "#" + fieldName);
@@ -156,7 +156,7 @@ public final class ExcludedRefs implements Serializable {
       checkNotNull(fieldName, "fieldName");
       Map<String, ParamsBuilder> excludedFields = staticFieldNameByClassName.get(className);
       if (excludedFields == null) {
-        excludedFields = new LinkedHashMap<>();
+        excludedFields = new LinkedHashMap<String, ParamsBuilder>();
         staticFieldNameByClassName.put(className, excludedFields);
       }
       lastParams = new ParamsBuilder("static field " + className + "#" + fieldName);

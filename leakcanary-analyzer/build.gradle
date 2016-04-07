@@ -38,9 +38,9 @@ task copyTestResources(type: Copy) {
   into "${buildDir}/classes/test"
 }
 
-afterEvaluate { project ->
+/*afterEvaluate { project ->
   testDebugUnitTest.dependsOn copyTestResources
-}
+}*/
 
 android {
   compileSdkVersion rootProject.ext.compileSdkVersion

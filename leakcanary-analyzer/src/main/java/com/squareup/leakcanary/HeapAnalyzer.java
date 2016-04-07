@@ -99,7 +99,7 @@ public final class HeapAnalyzer {
    */
   void deduplicateGcRoots(Snapshot snapshot) {
     // THashMap has a smaller memory footprint than HashMap.
-    final THashMap<String, RootObj> uniqueRootMap = new THashMap<>();
+    final THashMap<String, RootObj> uniqueRootMap = new THashMap<String, RootObj>();
 
     final List<RootObj> gcRoots = (ArrayList) snapshot.getGCRoots();
     for (RootObj root : gcRoots) {
@@ -125,7 +125,7 @@ public final class HeapAnalyzer {
 
   private Instance findLeakingReference(String key, Snapshot snapshot) {
     ClassObj refClass = snapshot.findClass(KeyedWeakReference.class.getName());
-    List<String> keysFound = new ArrayList<>();
+    List<String> keysFound = new ArrayList<String>();
     for (Instance instance : refClass.getInstancesList()) {
       List<ClassInstance.FieldValue> values = classInstanceValues(instance);
       String keyCandidate = asString(fieldValue(values, "key"));
@@ -221,7 +221,7 @@ public final class HeapAnalyzer {
   }
 
   private LeakTrace buildLeakTrace(LeakNode leakingNode) {
-    List<LeakTraceElement> elements = new ArrayList<>();
+    List<LeakTraceElement> elements = new ArrayList<LeakTraceElement>();
     // We iterate from the leak to the GC root
     LeakNode node = new LeakNode(null, null, leakingNode, null, null);
     while (node != null) {
@@ -250,7 +250,7 @@ public final class HeapAnalyzer {
     LeakTraceElement.Holder holderType;
     String className;
     String extra = null;
-    List<String> fields = new ArrayList<>();
+    List<String> fields = new ArrayList<String>();
     if (holder instanceof ClassObj) {
       ClassObj classObj = (ClassObj) holder;
       holderType = CLASS;

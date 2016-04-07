@@ -68,7 +68,7 @@ public final class AndroidHeapDumper implements HeapDumper {
       return NO_DUMP;
     }
 
-    FutureResult<Toast> waitingForToast = new FutureResult<>();
+    FutureResult<Toast> waitingForToast = new FutureResult<Toast>();
     showToast(waitingForToast);
 
     if (!waitingForToast.wait(5, SECONDS)) {
@@ -124,6 +124,7 @@ public final class AndroidHeapDumper implements HeapDumper {
         toast.setDuration(Toast.LENGTH_LONG);
         LayoutInflater inflater = LayoutInflater.from(context);
         toast.setView(inflater.inflate(R.layout.leak_canary_heap_dump_toast, null));
+        toast.setDuration(Toast.LENGTH_LONG);
         toast.show();
         // Waiting for Idle to make sure Toast gets rendered.
         Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {

@@ -13,16 +13,16 @@ subprojects {
       mavenCentral()
     }
     dependencies {
-      classpath 'com.android.tools.build:gradle:1.5.0'
+      classpath 'com.android.tools.build:gradle:1.2.3'
     }
   }
 }
 
 ext {
-  minSdkVersion = 8
+  minSdkVersion = 19
   compileSdkVersion = 23
   targetSdkVersion = compileSdkVersion
-  buildToolsVersion = '23.0.2'
+  buildToolsVersion = '19.1.0'
   javaVersion = JavaVersion.VERSION_1_7
 
   GROUP = 'com.squareup.leakcanary'

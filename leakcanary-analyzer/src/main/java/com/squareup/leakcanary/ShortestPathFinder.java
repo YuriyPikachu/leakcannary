@@ -58,11 +58,11 @@ final class ShortestPathFinder {
 
   ShortestPathFinder(ExcludedRefs excludedRefs) {
     this.excludedRefs = excludedRefs;
-    toVisitQueue = new LinkedList<>();
-    toVisitIfNoPathQueue = new LinkedList<>();
-    toVisitSet = new LinkedHashSet<>();
-    toVisitIfNoPathSet = new LinkedHashSet<>();
-    visitedSet = new LinkedHashSet<>();
+    toVisitQueue = new LinkedList<LeakNode>();
+    toVisitIfNoPathQueue = new LinkedList<LeakNode>();
+    toVisitSet = new LinkedHashSet<Instance>();
+    toVisitIfNoPathSet = new LinkedHashSet<Instance>();
+    visitedSet = new LinkedHashSet<Instance>();
   }
 
   static final class Result {
@@ -250,7 +250,7 @@ final class ShortestPathFinder {
 
   private void visitClassInstance(LeakNode node) {
     ClassInstance classInstance = (ClassInstance) node.instance;
-    Map<String, Exclusion> ignoredFields = new LinkedHashMap<>();
+    Map<String, Exclusion> ignoredFields = new LinkedHashMap<String, Exclusion>();
     ClassObj superClassObj = classInstance.getClassObj();
     Exclusion classExclusion = null;
     while (superClassObj != null) {

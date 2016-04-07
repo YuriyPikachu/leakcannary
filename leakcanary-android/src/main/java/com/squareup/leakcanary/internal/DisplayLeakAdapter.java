@@ -160,7 +160,7 @@ final class DisplayLeakAdapter extends BaseAdapter {
     }
     this.referenceKey = referenceKey;
     this.referenceName = referenceName;
-    this.elements = new ArrayList<>(leakTrace.elements);
+    this.elements = new ArrayList<LeakTraceElement>(leakTrace.elements);
     opened = new boolean[1 + elements.size()];
     notifyDataSetChanged();
   }
