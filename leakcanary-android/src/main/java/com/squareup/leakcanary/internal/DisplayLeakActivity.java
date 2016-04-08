@@ -312,7 +312,7 @@ public final class DisplayLeakActivity extends Activity {
             }
           });
           invalidateOptionsMenu();
-          getActionBar().setDisplayHomeAsUpEnabled(true);
+         // getActionBar().setDisplayHomeAsUpEnabled(true);
           actionButton.setVisibility(VISIBLE);
           actionButton.setText(R.string.leak_canary_delete);
           actionButton.setOnClickListener(new View.OnClickListener() {
@@ -342,7 +342,7 @@ public final class DisplayLeakActivity extends Activity {
         });
         invalidateOptionsMenu();
         setTitle(getString(R.string.leak_canary_leak_list_title, getPackageName()));
-        getActionBar().setDisplayHomeAsUpEnabled(false);
+//        getActionBar().setDisplayHomeAsUpEnabled(false);
         actionButton.setText(R.string.leak_canary_delete_all);
         actionButton.setOnClickListener(new View.OnClickListener() {
           @Override public void onClick(View v) {
