@@ -7,20 +7,20 @@ def isReleaseBuild() {
 
 def getReleaseRepositoryUrl() {
   return hasProperty('RELEASE_REPOSITORY_URL') ? RELEASE_REPOSITORY_URL
-      : "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+      : "http://192.168.1.234:8080/nexus/content/repositories/deploymentRepo-release/"
 }
 
 def getSnapshotRepositoryUrl() {
   return hasProperty('SNAPSHOT_REPOSITORY_URL') ? SNAPSHOT_REPOSITORY_URL
-      : "https://oss.sonatype.org/content/repositories/snapshots/"
+      : "http://192.168.1.234:8080/nexus/content/repositories/deploymentRepo-snapshot/"
 }
 
 def getRepositoryUsername() {
-    return hasProperty('SONATYPE_NEXUS_USERNAME') ? SONATYPE_NEXUS_USERNAME : ""
+    return hasProperty('SONATYPE_NEXUS_USERNAME') ? SONATYPE_NEXUS_USERNAME : "admin"
 }
 
 def getRepositoryPassword() {
-    return hasProperty('SONATYPE_NEXUS_PASSWORD') ? SONATYPE_NEXUS_PASSWORD : ""
+    return hasProperty('SONATYPE_NEXUS_PASSWORD') ? SONATYPE_NEXUS_PASSWORD : "admin123"
 }
 
 afterEvaluate { project ->
@@ -40,7 +40,7 @@ afterEvaluate { project ->
                     authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
                 }
 
-                pom.project {
+               /* pom.project {
                     name POM_NAME
                     packaging POM_PACKAGING
                     description POM_DESCRIPTION
@@ -66,7 +66,7 @@ afterEvaluate { project ->
                             name POM_DEVELOPER_NAME
                         }
                     }
-                }
+                }*/
 
             }
         }
