@@ -25,14 +25,14 @@ public class MainActivity extends Activity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.main_activity);
+    //setContentView(R.layout.main_activity);
 
-    View button = findViewById(R.id.async_task);
-    button.setOnClickListener(new View.OnClickListener() {
+  //  View button = findViewById(R.id.async_task);
+   /* button.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         startAsyncTask();
       }
-    });
+    });*/
   }
 
   void startAsyncTask() {
